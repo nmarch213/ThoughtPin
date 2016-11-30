@@ -1,0 +1,5 @@
+{{#if user}}
+    <p>You are currently logged in as {{user.username}}</p>
+{{else}}
+    <p>You are currently not logged in. Please <a href="/login">login</a> or <a href="/register">register</a> ...</p>
+{{/if}}
