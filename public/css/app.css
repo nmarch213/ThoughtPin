@@ -129,3 +129,7 @@ input[type="password"] {
 .Site-content {
   flex: 1;
 }
+
+#login-form {
+  padding-top: 25%;
+}
