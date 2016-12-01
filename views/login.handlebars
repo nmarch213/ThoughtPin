@@ -11,7 +11,7 @@
 				<div class="field">
 					<div class="ui left icon input">
 						<i class="user icon"></i>
-						<input type="text" name="email" placeholder="E-mail address">
+						<input type="text" name="username" placeholder="Username" required="" autofocus="">
 					</div>
 				</div>
 				<div class="field">
@@ -20,7 +20,7 @@
 						<input type="password" name="password" placeholder="Password">
 					</div>
 				</div>
-				<div class="ui fluid large black submit button">Login</div>
+				<button class="ui fluid large black button" name="Submit" value="Login" type="Submit">Login</button>
 			</div>
 
 			<div class="ui error message"></div>
@@ -28,46 +28,8 @@
 		</form>
 
 		<div class="ui message">
-			New to us? <a href="#">Sign Up</a>
+			New to us? <a href="/register">Sign Up</a>
 		</div>
 	</div>
 </div>
 
-<script>
-	$(document)
-	.ready(function() {
-		$('.ui.form')
-		.form({
-			fields: {
-				email: {
-					identifier  : 'email',
-					rules: [
-					{
-						type   : 'empty',
-						prompt : 'Please enter your e-mail'
-					},
-					{
-						type   : 'email',
-						prompt : 'Please enter a valid e-mail'
-					}
-					]
-				},
-				password: {
-					identifier  : 'password',
-					rules: [
-					{
-						type   : 'empty',
-						prompt : 'Please enter your password'
-					},
-					{
-						type   : 'length[6]',
-						prompt : 'Your password must be at least 6 characters'
-					}
-					]
-				}
-			}
-		})
-		;
-	})
-	;
-</script>

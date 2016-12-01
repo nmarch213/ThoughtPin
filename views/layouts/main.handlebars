@@ -38,8 +38,13 @@
 				</div>
 			</div>
 			<div class="ui right floated item">
-				<a href="/login" class="item">Login</a>
-				<a href="/register" class="item">Register</a>
+                {{#if user}}
+                    <li class="item">Howdy, {{user.username}}</li>
+                {{else}}
+                    <a href="/login" class="item">Login</a>
+                    <a href="/register" class="item">Register</a>
+                {{/if}}
+
 			</div>
 		</div>
 	</div>
