@@ -127,6 +127,8 @@ input[type="password"] {
 }
 
 .Site-content {
+  padding-top: 10%;
+  padding-bottom: 10%;
   flex: 1;
 }
 
