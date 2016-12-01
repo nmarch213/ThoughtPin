@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -44,8 +43,16 @@ passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
-// Register routes
-app.use('/', require('./routes.js'));
+//Routes
+var indexRoutes = require("./routes/index.js");
+var blogRoutes = require("./routes/blog.js");
+
+// index routes
+app.use(indexRoutes);
+// blog routes
+app.use("/blogs", blogRoutes);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -79,6 +86,6 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(app.get('port'), function(){
-  console.log( 'Express started on http://localhost:' +
+  console.log( 'Thought Pin started on http://localhost:' +
     app.get('port') + '; press Ctrl-C to terminate.' );
 });
