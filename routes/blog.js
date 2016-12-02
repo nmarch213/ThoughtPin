@@ -89,7 +89,7 @@ router.delete("/:id", function(req, res){
 
 //INDEX ROUTE
 router.get("/", function(req, res){
-	Blog.find({}, function(err, blogs){
+	Blog.find({}).sort({created: -1}).exec(function(err, blogs){
 		if(err)
 			console.log("error");
 		else{

@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
     if(err){
       console.log(err);
     }else{
-      res.render('index', {user: req.user, blogs: allBlogs});
+      res.render('index', {user: req.user, blogs: allBlogs, helpers: trimString});
     }
   })
 });
@@ -25,7 +25,7 @@ router.get('/register', function(req, res) {
 router.post('/register', function(req,res, next){
 	console.log('registering user');
   console.log(req.body);
-  Account.register(new Account({username: req.body.name}), req.body.password, function(err) {
+  Account.register(new Account({username: req.body.name, role: "user"}), req.body.password, function(err) {
     if (err) {
       console.log('error while user register!', err);
       return next(err);
@@ -50,7 +50,7 @@ router.get('/dashboard',isLoggedIn, function(req, res){
     if(err){
       console.log(err)
     }else{
-        res.render('index/dashboard', {user: req.user, blogs: usersBlogs});
+        res.render('index/dashboard', {user: req.user, blogs: usersBlogs, helpers: trimString});
     }
   })
 })
@@ -98,6 +98,9 @@ function isLoggedIn(req, res, next){
     return next();
   }
   res.redirect("/login");
+}
+function trimString(str){
+  return str.substr(0, 200)
 }
 
 module.exports = router;
