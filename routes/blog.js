@@ -2,6 +2,8 @@ var passport = require('passport');
 var Account = require("./../models/account.js");
 var router = require('express').Router();
 var Blog = require("./../models/blog.js");
+var methodOverride = require("method-override");
+var expressSanitizer = require("express-sanitizer");
 
 
 //NEW ROUTE
@@ -34,7 +36,7 @@ router.get("/:id", function(req, res){
 router.post("/new", function(req, res){
 	console.log("post hit");
 	//create
-	req.body.blog.body = req.sanitize(req.body.blog.body);
+	//req.body.blog.body = req.sanitize(req.body.blog.body);
 	Blog.create(req.body.blog, function(err, newBlog){
 		if(err)
 			res.render("blogs/new");
