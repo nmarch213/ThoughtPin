@@ -9,7 +9,7 @@ var passport = require('passport');
 
 //NEW ROUTE
 router.get("/new",isLoggedIn, function(req, res){
-	res.render("blog/new");
+	res.render("blog/new", {user: req.user});
 	
 })
 
@@ -23,7 +23,7 @@ router.get("/:id", function(req, res){
 		}
 		else{
 			console.log("no error");
-			res.render("blog/show", {blog: foundBlog});
+			res.render("blog/show", {blog: foundBlog, user: req.user});
 		}
 	});
 });
@@ -36,10 +36,12 @@ router.post("/new", function(req, res){
 	var title = req.body.title;
 	var image = req.body.image;
 	var body = req.body.body;
-	var newBlog = ({title:title, image:image, body:body, owner:user.req.user});
+	var newBlog = ({title:title, image:image, body:body, owner:req.user.username});
+
+	console.log(newBlog);
 	Blog.create(newBlog, function(err, newBlog){
 		if(err)
-			res.render("blogs/new");
+			res.render("blogs/new", {user: req.user});
 		else{
 			res.redirect("/");
 		}
