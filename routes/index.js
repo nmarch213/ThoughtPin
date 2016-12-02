@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 
 //gets register page
 router.get('/register', function(req, res) {
-  res.render('register', {});
+  res.render('index/register', {});
 });
 
 //registers a user
@@ -29,7 +29,7 @@ router.post('/register', function(req,res, next){
 
 //get login page
 router.get('/login', function(req, res) {
-  res.render('/login', {user: req.user});
+  res.render('index/login', {user: req.user});
 });
 
 //attempt to login

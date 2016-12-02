@@ -19,27 +19,17 @@
 			</a>
 			<a href="#" class="item">Home</a>
 			<div class="ui simple dropdown item">
-				Dropdown <i class="dropdown icon"></i>
+				Blog <i class="dropdown icon"></i>
 				<div class="menu">
-					<a href="#" class="item">Link Item</a>
-					<a href="#" class="item">Link Item</a>
-					<a href="#" class="item">Link Item</a>
-					<div class="divider"></div>
-					<div class="header">Header Item</div>
-					<div class="item">
-			            <i class="dropdown icon"></i>
-			            Sub Menu
-			            <div class="menu">
-			             	<a class="item" href="#">Link Item</a>
-			              	<a class="item" href="#">Link Item</a>
-			            </div>
-			        </div>
-			        <a href="#" class="item">Link Item</a>
+					<a href="/blogs/new" class="item">New Blog</a>
+					<a href="/blogs/"{{user._id}} class="item">My Blogs</a>
+					<a href="/blogs" class="item">View Blogs</a>
 				</div>
 			</div>
 			<div class="ui right floated item">
                 {{#if user}}
                     <li class="item">Howdy, {{user.username}}</li>
+                    <a href="/logout" class="item">Logout</a>
                 {{else}}
                     <a href="/login" class="item">Login</a>
                     <a href="/register" class="item">Register</a>
