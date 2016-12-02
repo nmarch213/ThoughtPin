@@ -24,7 +24,8 @@ router.get('/register', function(req, res) {
 //registers a user
 router.post('/register', function(req,res, next){
 	console.log('registering user');
-  Account.register(new Account({username: req.body.username}), req.body.password, function(err) {
+  console.log(req.body);
+  Account.register(new Account({username: req.body.name}), req.body.password, function(err) {
     if (err) {
       console.log('error while user register!', err);
       return next(err);
@@ -43,6 +44,16 @@ router.get('/login', function(req, res) {
 router.post('/login', passport.authenticate('local'), function(req, res) {
   res.redirect('/');
 });
+
+router.get('/dashboard',isLoggedIn, function(req, res){
+  Blogs.find({owner: req.user.username}).sort({created : -1}).exec(function(err, usersBlogs){
+    if(err){
+      console.log(err)
+    }else{
+        res.render('index/dashboard', {user: req.user, blogs: usersBlogs});
+    }
+  })
+})
 
 //logs a user out.
 router.get('/logout', function(req, res) {

@@ -7,7 +7,8 @@ var blogSchema = new Schema({
 	image: String,
 	body: String,
 	created: {type: Date, default: Date.now},
-	owner: String
+	owner: String,
+	ownerID: String
 });
 
 module.exports = mongoose.model('Blog', blogSchema);

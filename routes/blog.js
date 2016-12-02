@@ -36,7 +36,7 @@ router.post("/new", function(req, res){
 	var title = req.body.title;
 	var image = req.body.image;
 	var body = req.body.body;
-	var newBlog = ({title:title, image:image, body:body, owner:req.user.username});
+	var newBlog = ({title:title, image:image, body:body, owner:req.user.username, ownerId: req.user._id });
 
 	console.log(newBlog);
 	Blog.create(newBlog, function(err, newBlog){

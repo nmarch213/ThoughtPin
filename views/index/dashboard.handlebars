@@ -1,0 +1,52 @@
+<div class="ui main text container">
+	<div class="ui huge header">Welcome Back, {{user.username}}</div>
+	<div class="ui top attached tabular menu">
+		<a class="active item" data-tab="first">My Blogs</a>
+		<a class="item" data-tab="second">New Blog</a>
+		<a class="item" data-tab="third">Account Settings</a>
+	</div>
+	<div class="ui bottom attached active tab segment" data-tab="first">
+		{{#each blogs}}
+		<div class="item">
+			<div class="image">
+				<img class="ui centered rounded image" src={{image}} alt="Blog picture">
+				<img>
+			</div>
+			<div class="content">
+				<a href="/blogs/{{_id}}" title="">{{title}}</a>
+				<div class="meta">
+					<span>{{created}}</span>
+				</div>
+				<div class="description">
+					<p>{{body}}</p>	
+				</div>
+				<div class="extras">
+					<a class="ui floated basic violet button" href="/blogs/{{_id}}">Read More <i class="right chevron icon"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+		{{/each}}
+	</div>
+	<div class="ui bottom attached tab segment" data-tab="second">
+			<div class="ui huge header align center">New Blog</div>
+			<form class="ui form" action="/blogs/new" method="POST" accept-charset="utf-8">
+				<div class="field">
+					<label>Title</label>
+					<input type="text" name="title" placeholder="title">
+				</div>
+				<div class="field">
+					<label>Image</label>
+					<input type="text" name="image" placeholder="image">
+				</div>
+				<div class="field">
+					<label>Blog Content</label>
+					<textarea name="body"></textarea>
+				</div>
+				<button class="ui violet big basic button float right" type="submit">Submit!</button>
+			</form>
+	</div>
+	<div class="ui bottom attached tab segment" data-tab="third">
+		Account Settings
+	</div>
+</div>

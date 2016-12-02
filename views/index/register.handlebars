@@ -1,34 +1,31 @@
-<div class="container">
-			<div class="row main">
-				<div class="main-login main-center">
-					<form class="form-horizontal" method="post" action="/register">
-						<div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Username</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">Password</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group ">
-							<input type="submit" class="btn btn-primary btn-lg btn-block login-button" value="register">
-						</div>
-						<div class="login-register">
-				            <a href="/login">Login</a>
-				         </div>
-					</form>
-				</div>
+<div id="login-form" class="container ui middle aligned center aligned grid">
+	<div class="column">
+		<h2 class="ui black image header">
+			<i class="fa fa-map-pin fa-3x" aria-hidden="true" style="padding-right: 10%"></i>
+			<div class="content aligned center">
+				Register a New Account!
 			</div>
+		</h2>
+		<form class="ui large form" action="/register" method="post" name="Register_Form">
+			<div class="ui stacked segment">
+				<div class="field">
+					<div class="ui left icon input">
+						<i class="user icon"></i>
+						<input type="text" name="username" id="username" placeholder="Username" required="" autofocus="">
+					</div>
+				</div>
+				<div class="field">
+					<div class="ui left icon input">
+						<i class="lock icon"></i>
+						<input type="password" name="password" id="password" placeholder="Password">
+					</div>
+				</div>
+				<button class="ui fluid large black button" name="Submit" value="Login" type="Submit">Login</button>
+			</div>
+			<div class="ui error message"></div>
+		</form>
+		<div class="ui message">
+			New to us? <a href="/register">Sign Up</a>
 		</div>
+	</div>
+</div>

@@ -5,12 +5,6 @@ var mongoose = require('mongoose'),
 var Account = new Schema({
 	name: String,
 	role: String,
-	posts: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Blog"
-		}
-	]
 });
 
 Account.plugin(passportLocalMongoose);
