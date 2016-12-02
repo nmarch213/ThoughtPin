@@ -1,11 +1,18 @@
 var passport = require('passport');
 var Account = require("./../models/account.js");
 var router = require('express').Router();
+var Blogs = require("./../models/blog.js");
 
 
 //homepage
 router.get('/', function(req, res) {
-  res.render('index', {user: req.user});
+  Blogs.find({}, function(err, allBlogs){
+    if(err){
+      console.log(err);
+    }else{
+      res.render('index', {user: req.user, blogs: allBlogs});
+    }
+  })
 });
 
 
@@ -24,7 +31,7 @@ router.post('/register', function(req,res, next){
     }
     console.log('user registered!');
     res.redirect('/');
-	});
+  });
 });
 
 //get login page

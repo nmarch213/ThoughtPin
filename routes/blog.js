@@ -4,10 +4,11 @@ var router = require('express').Router();
 var Blog = require("./../models/blog.js");
 var methodOverride = require("method-override");
 var expressSanitizer = require("express-sanitizer");
+var passport = require('passport');
 
 
 //NEW ROUTE
-router.get("/new", function(req, res){
+router.get("/new",isLoggedIn, function(req, res){
 	res.render("blog/new");
 	
 })
@@ -22,22 +23,21 @@ router.get("/:id", function(req, res){
 		}
 		else{
 			console.log("no error");
-			res.render("show", {blog: foundBlog});
+			res.render("blog/show", {blog: foundBlog});
 		}
 	});
 });
 
-//Show Routes
-router.get("/:id", function(req, res){
-	res.send("winner");
-})
 
 //CREATE ROUTE
 router.post("/new", function(req, res){
-	console.log("post hit");
+	
 	//create
-	//req.body.blog.body = req.sanitize(req.body.blog.body);
-	Blog.create(req.body.blog, function(err, newBlog){
+	var title = req.body.title;
+	var image = req.body.image;
+	var body = req.body.body;
+	var newBlog = ({title:title, image:image, body:body, owner:user.req.user});
+	Blog.create(newBlog, function(err, newBlog){
 		if(err)
 			res.render("blogs/new");
 		else{
@@ -96,7 +96,13 @@ router.get("/", function(req, res){
 	})
 })
 
-
+// Middleware asking if logged in
+function isLoggedIn(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+  res.render("index/login");
+}
 
 
 
