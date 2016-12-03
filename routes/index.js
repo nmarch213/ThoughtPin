@@ -10,11 +10,11 @@ router.get('/', function(req, res) {
     if(err){
       console.log(err);
     }else{
-      res.render('index', {user: req.user, blogs: allBlogs, helpers: trimString});
+      res.render('index', {user: req.user, blogs: allBlogs, helpers: {trimString: function(str){return str.substr(0, 200)}}
+      });
     }
   })
-});
-
+})
 
 //gets register page
 router.get('/register', function(req, res) {
@@ -50,7 +50,8 @@ router.get('/dashboard',isLoggedIn, function(req, res){
     if(err){
       console.log(err)
     }else{
-        res.render('index/dashboard', {user: req.user, blogs: usersBlogs, helpers: trimString});
+        res.render('index/dashboard', {user: req.user, blogs: usersBlogs, helpers: {trimString: function(str){return str.substr(0, 200)}}
+      });
     }
   })
 })
@@ -99,8 +100,6 @@ function isLoggedIn(req, res, next){
   }
   res.redirect("/login");
 }
-function trimString(str){
-  return str.substr(0, 200)
-}
+
 
 module.exports = router;

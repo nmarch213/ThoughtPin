@@ -9,7 +9,6 @@ var LocalStrategy = require('passport-local').Strategy;
 var credentials = require('./credentials.js');
 var methodOverride = require("method-override");
 var expressSanitizer = require("express-sanitizer");
-var helpers = require('handlebars-helpers')();
 
 var app = express();
 
